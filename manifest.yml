@@ -1,0 +1,29 @@
+---
+language: ruby
+default_versions:
+- name: varnish
+  version: 4.1.8
+url_to_dependency_map: 
+- match: varnish-(\d+\.\d+\.\d+)
+  name: varnish
+  version: $1
+dependencies: 
+- name: varnish
+  version: 4.1.8
+  uri: https://varnish-cache.org/_downloads/varnish-4.1.8.tgz
+  cf_stacks:
+  - cflinuxfs2
+  md5: 6fc474e77032c1884ea7428813930079
+
+exclude_files:
+- ".git/"
+- ".gitignore"
+- ".gitmodules"
+- cf_spec/
+- log/
+- tests/
+- cf.Gemfile
+- cf.Gemfile.lock
+- bin/package
+- buildpack-packager/
+- php_buildpack-*v*
