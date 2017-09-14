@@ -6,5 +6,50 @@ set -o pipefail   # don't ignore exit codes when piping output
 set -x            # enable debugging
 
 # Configure directories
-build_dir=$1
-cache_dir=$2
+BUILD_DIR=$1
+CACHE_DIR=$2
+BUILD_PACK_DIR=$(dirname $(dirname $0))
+
+echo "All arguments [$@]"
+
+if [ ! -d "$BUILD_DIR" ]; then
+  echo "Build directory [$BUILD_DIR] does not exist, creating"
+  mkdir -p "$BUILD_DIR"
+else
+  echo "Build directory [$BUILD_DIR] exists"
+  echo "Build directory contents..."
+  ls -laRh $BUILD_DIR
+fi
+
+
+echo "Home Directory:"
+ls -laRh "/home"
+
+if [ ! -d "$CACHE_DIR" ]; then
+  echo "Cache directory [$CACHE_DIR] does not exist, creating"
+  mkdir -p "$CACHE_DIR"
+else
+  echo "Cache directory [$CACHE_DIR] exists"
+fi
+
+echo "The compile script is at [$0]"
+echo "The build pack is situated at [$BUILD_PACK_DIR]"
+
+echo "Moving to the cache dir..."
+cd "$CACHE_DIR"
+echo "Now in [$(pwd)]"
+
+echo "Directory listing:"
+ls -la
+
+echo "Listing Build Pack Directory:"
+ls -la /tmp/buildpacks
+
+echo "Listing Build Pack Cache:"
+ls -la "$BUILDPACK_CACHE"
+
+echo "Listing Environment:"
+env
+
+echo "Who am i?"
+whoami
