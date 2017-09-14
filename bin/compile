@@ -6,9 +6,9 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 BUILD_PACK_DIR=$(dirname $(dirname $0))
 
-apt-get update
-apt-get install curl
+sudo apt-get update
+sudo apt-get install curl
 
-curl -s https://packagecloud.io/install/repositories/varnishcache/varnish41/script.deb.sh | sudo bash
+sudo curl -s https://packagecloud.io/install/repositories/varnishcache/varnish41/script.deb.sh | sudo bash
 
-apt-get install varnish
+sudo apt-get install varnish
